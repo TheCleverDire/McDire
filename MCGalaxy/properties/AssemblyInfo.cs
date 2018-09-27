@@ -18,8 +18,8 @@
 using System.Reflection;
 using System.Runtime.InteropServices;
 
-[assembly: AssemblyTitle("MCGalaxy")]
+[assembly: AssemblyTitle("MCDire")]
 [assembly: AssemblyDescription("ClassiCube Server Software")]
-[assembly: AssemblyProduct("MCGalaxy")]
+[assembly: AssemblyProduct("MCDire")]
 [assembly: AssemblyCopyright("Copyright © 2015-2018")]
 [assembly: AssemblyVersion(MCGalaxy.Server.InternalVersion)]
