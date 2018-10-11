@@ -203,23 +203,54 @@ namespace MCGalaxy {
             }
             source.CheckForMessageSpam();
         }
-        
-                
+
+
         static string UnescapeMessage(Player pl, Player src, string msg) {
-            if (pl.Ignores.Nicks && pl.Ignores.Titles) {
+            if (pl.Ignores.Nicks && pl.Ignores.Titles)
+            {
                 string srcColoredTruename = src.color + src.truename;
                 return msg
                     .Replace("λFULL", src.GroupPrefix + srcColoredTruename)
                     .Replace("λNICK", srcColoredTruename);
-            } else if (pl.Ignores.Nicks) {
+            }
+            else if (pl.Ignores.Nicks)
+            {
                 return msg
                     .Replace("λFULL", src.color + src.prefix + src.truename)
                     .Replace("λNICK", src.color + src.truename);
-            } else if (pl.Ignores.Titles) {
+            }
+            else if (pl.Ignores.Color)
+            {
+                return msg
+                    .Replace("λFULL", src.GroupPrefix + src.DisplayName)
+                    .Replace("λNICK", src.DisplayName);
+            }
+            else if (pl.Ignores.Nicks && pl.Ignores.Color)
+            {
+                return msg
+                    .Replace("λFULL", src.prefix + src.truename)
+                    .Replace("λNICK", src.truename);
+            }
+            else if (pl.Ignores.Nicks && pl.Ignores.Color && pl.Ignores.Titles)
+            {
+                return msg
+                    .Replace("λFULL", src.truename)
+                    .Replace("λNICK", src.truename);
+            }
+            else if (pl.Ignores.Titles)
+            {
                 return msg
                     .Replace("λFULL", src.GroupPrefix + src.ColoredName)
                     .Replace("λNICK", src.ColoredName);
-            } else {
+            }
+            else if (pl.Ignores.Titles && pl.Ignores.Color)
+            {
+                return msg
+                    .Replace("λFULL", src.GroupPrefix + src.DisplayName)
+                    .Replace("λNICK", src.ColoredName);
+            }
+            else
+            {
                 return msg
                     .Replace("λFULL", src.FullName)
                     .Replace("λNICK", src.ColoredName);
